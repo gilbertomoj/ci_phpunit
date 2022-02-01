@@ -2,7 +2,6 @@
 namespace SMTP;
 use PHPUnit\Framework\TestCase;
 use FIle\File;
-include("NormalFIle.php");
 $json = file_get_contents("./JSON/user.json");
 $data = json_decode($json);
 
@@ -40,10 +39,13 @@ class EqualsTest extends TestCase
         $this->assertEquals($this->work, true);
     }
     public function testMessage(){
-        $a = new File();
-        $var = $a->showMessage();
-
-        $this->assertEquals($var, "ABC");
+        $data["name"] = "Blabal";
+        $data["description"] = "sdfdsafkdsafadkfddfksfd";
+        $data["developer"] = "asdasdasd";
+        $data["release_date"] = 2020;
+        $data["Price"] = 20;
+        $gameModel = new Games();
+        $gameModel->store($data);
     }
 }
 ?>

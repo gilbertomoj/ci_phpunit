@@ -1,6 +1,6 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Games extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
@@ -27,9 +27,23 @@ class Games extends CI_Controller {
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
-		$this->load->view('pages/games', $data);
+		$this->load->view('pages/form-games', $data);
 		$this->load->view('templates/footer', $data);
 		$this->load->view('templates/js', $data);
+	}
+
+	public function store($data = NULL)
+	{
+		if($data == NULL)
+		{
+			$game = $_POST;
+			$this->load->model("games_model");
+			$this->games_model->store($game);
+		}
+		else {
+			# code...
+		}
+
 	}
 
 	
